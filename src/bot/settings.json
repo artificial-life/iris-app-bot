@@ -1,0 +1,8 @@
+{
+  "api_server": "194.226.171.100",
+  "api_port": "9000",
+  "login": "megatron",
+  "password": "1",
+  "control-panel_arm_id": "pc-1",
+  "terminal_arm_id": "term-1"
+}

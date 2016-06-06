@@ -19,16 +19,19 @@ let current_ticket = false;
 let doFn = function(ws, interval, count) {
   interval_id = setInterval(() => {
     iterations++;
-    current_ticket && ticket.arrived().then(() => ws.getNext()).then(d => current_ticket = d);
-
+    current_ticket && current_ticket.arrived().then(() => ws.getNext()).then(d => current_ticket = d);
     if (iterations == count) clearInterval(interval_id);
   }, interval);
 }
 app.then((ws) => {
   return new Promise((resolve) => {
-    ws.once('queue.update', (d) => resolve(_.first(d.live.tickets)))
+    ws.once('queue.update', (d) => resolve({
+      ticket: _.first(d.live.tickets),
+      ws: ws
+    }));
   });
 }).then((d) => {
-  console.log('Ticket', d.code);
-  doFn(ws, Settings.getItem('interval'), Settings.getItem('iterations_count'))
+  current_ticket = d.ticket;
+  console.log('Ticket', d.ticket.code);
+  doFn(d.ws, Settings.getItem('interval'), Settings.getItem('iterations_count'));
 });

@@ -1,0 +1,10 @@
+{
+    "interval": 2000,
+    "iterations_count": 2,
+    "control-panel_arm_id": "pc-1",
+    "workstation_type": "control-panel",
+    "password": "123456",
+    "login": "oper",
+    "api_server": "194.226.171.100",
+    "api_port": "9000"
+}

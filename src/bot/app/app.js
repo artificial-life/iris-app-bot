@@ -1,27 +1,14 @@
 'use strict'
 
+function Login(login, password, workstation_type) {
+	let User = require('./classes/User.js');
+	let bot = new User(workstation_type);
 
-let settings = require('./classes/Settings.js');
-let workstation_type = 'terminal';
+	return bot.login(login, password).then(() => {
+		return bot.getWorkstation(workstation_type);
+	})
+};
 
-let User = require('./classes/User.js');
-let bot = new User(workstation_type);
+let Settings = require('./classes/Settings.js');
 
-let login = settings.getItem('login');
-let password = settings.getItem('password');
-
-bot.login(login, password).then(() => {
-  console.log('connection complete');
-
-  let ws = bot.getWorkstation(workstation_type);
-  let fields = ws.fields;
-  setTimeout(function() {
-    ws.confirm({
-      service: 'service-1',
-      service_count: 1
-    }, true).then((d) => {
-      console.log(d);
-    })
-  }, 2000);
-
-})
+module.exports = Login(Settings.getItem('login'), Settings.getItem('password'), Settings.getItem('workstation_type'))

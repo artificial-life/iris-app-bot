@@ -1,0 +1,12 @@
+{
+    "service": ["service-1", "service-2", "service-3"],
+    "interval": 2000,
+    "service_count": 1,
+    "iterations_count": 50,
+    "terminal_arm_id": "term-1",
+    "workstation_type": "terminal",
+    "password": "1",
+    "login": "megatron",
+    "api_server": "194.226.171.100",
+    "api_port": "9000"
+}

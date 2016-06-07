@@ -5,6 +5,6 @@
     "workstation_type": "control-panel",
     "password": "123456",
     "login": "oper",
-    "api_server": "194.226.171.100",
+    "api_server": "194.226.171.146",
     "api_port": "9000"
 }

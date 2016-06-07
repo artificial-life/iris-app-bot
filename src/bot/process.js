@@ -5,7 +5,7 @@ let _ = require('lodash');
 let Settings = require('./app/classes/Settings.js');
 let boot = require('./boot.js')('process');
 
-let app = require('./app/app.js');
+console.log(process.argv[2], process.argv[3]);
 
 if (process.argv[2] && process.argv[3]) {
 	Settings.setItem('login', process.argv[2]);
@@ -15,6 +15,8 @@ if (process.argv[2] && process.argv[3]) {
 if (process.argv[4]) {
 	Settings.setItem('control-panel_arm_id', process.argv[4]);
 }
+
+let app = require('./app/app.js');
 
 let iterations = 0;
 let interval_id = false;
